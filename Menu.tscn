@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/JosefinSans.tres" type="DynamicFont" id=1]
+
+[node name="VBoxContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+margin_top = 100.0
+margin_right = 720.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+text = "Score: 0"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -143.817
+margin_bottom = -95.8167
+custom_fonts/font = ExtResource( 1 )
+text = "Press space to start"
+align = 1

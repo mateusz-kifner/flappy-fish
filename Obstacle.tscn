@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Obstacle.gd" type="Script" id=1]
+[ext_resource path="res://Stretch.shader" type="Shader" id=2]
+[ext_resource path="res://Assets/obstacle.png" type="Texture" id=3]
+[ext_resource path="res://aspect.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/aspect = 12.5
+shader_param/place = null
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28, 400 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/aspect = 12.5
+shader_param/place = null
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20.2423, 1000 )
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource( 1 )
+gap = 400.0
+
+[node name="Down" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Down"]
+material = SubResource( 1 )
+position = Vector2( -28, 0 )
+scale = Vector2( 2, 31.2195 )
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down"]
+position = Vector2( 0, 400 )
+shape = SubResource( 2 )
+
+[node name="Up" type="Area2D" parent="."]
+rotation = 3.14159
+
+[node name="Sprite" type="Sprite" parent="Up"]
+material = SubResource( 3 )
+position = Vector2( -28, 0 )
+scale = Vector2( 2, 31.2195 )
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+position = Vector2( 0, 400 )
+shape = SubResource( 2 )
+
+[node name="Score" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+shape = SubResource( 4 )
+[connection signal="body_entered" from="Down" to="." method="onHit"]
+[connection signal="body_entered" from="Up" to="." method="onHit"]
+[connection signal="body_entered" from="Score" to="." method="_on_Score_body_entered"]
