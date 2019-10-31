@@ -20,7 +20,11 @@ func _process(delta):
 	else:
 		pressed = false
 		accel_y = 50
-		
+	
+	if(position.y > get_viewport_rect().size.y/2 or position.y < -get_viewport_rect().size.y/2):
+		global.game_end = true
+		get_tree().paused = true
+	
 	vel_y += accel_y
 	
 	look_at(Vector2(500,vel_y))

@@ -5,7 +5,7 @@ uniform float aspect;
 uniform float place;
 
 void fragment(){
-	vec2 texSize = vec2(textureSize(TEXTURE,0));
+//	vec2 texSize = vec2(textureSize(TEXTURE,0));
 	vec2 uv = vec2(UV.x,(UV.y-place)*aspect);
 	COLOR = texture(TEXTURE,uv);
 	if(uv.y >1.0){
